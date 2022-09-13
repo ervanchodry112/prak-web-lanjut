@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\Mahasiswa;
 
 class Pages extends BaseController
 {
@@ -10,8 +11,9 @@ class Pages extends BaseController
         return view('index');
     }
 
-    public function view($page = 'home'){
-        if (! is_file(APPPATH . 'Views/pages/' . $page . '.php')) {
+    public function view($page = 'home')
+    {
+        if (!is_file(APPPATH . 'Views/pages/' . $page . '.php')) {
             // Whoops, we don't have a page for that!
             throw new \CodeIgniter\Exceptions\PageNotFoundException($page);
         }
@@ -23,7 +25,4 @@ class Pages extends BaseController
             . view('templates/footer');
     }
 
-    public function about($page = 'about'){
-
-    }
 }
