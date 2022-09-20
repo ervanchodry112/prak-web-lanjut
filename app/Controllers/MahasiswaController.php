@@ -35,4 +35,45 @@ class MahasiswaController extends BaseController
             . view('mahasiswa/create')
             . view('templates/footer');
     }
+
+    public function store()
+    {
+        $data = [
+            'npm' => $this->request->getPost('npm'),
+            'nama' => $this->request->getPost('nama'),
+            'alamat' => $this->request->getPost('alamat'),
+        ];
+        $this->mahasiswaModel->save($data);
+        return redirect()->to('/mahasiswa');
+    }
+
+    public function edit($id)
+    {
+        $mahasiswa = $this->mahasiswaModel->where('id', $id)->first();
+        $data = [
+            'title' => 'Edit Data',
+            'mahasiswa' => $mahasiswa
+        ];
+        return view('templates/header', $data)
+            . view('mahasiswa/edit', $data)
+            . view('templates/footer');
+    }
+
+    public function update($id)
+    {
+        $this->mahasiswaModel->save([
+            'id' => $id,
+            'npm' => $this->request->getVar('npm'),
+            'nama' => $this->request->getVar('nama'),
+            'alamat' => $this->request->getVar('alamat'),
+        ]);
+
+        return redirect()->to('/mahasiswa');
+    }
+
+    public function delete($id)
+    {
+        $this->mahasiswaModel->delete($id);
+        return redirect()->to('/mahasiswa');
+    }
 }

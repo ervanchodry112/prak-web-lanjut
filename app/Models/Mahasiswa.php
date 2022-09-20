@@ -9,7 +9,7 @@ class Mahasiswa extends Model
     protected $table            = 'data_mhs';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = ['npm', 'nama', 'alamat', 'created_at', 'updated_at'];
 
     // Dates
     protected $useTimestamps = true;
