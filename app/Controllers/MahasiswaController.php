@@ -38,6 +38,13 @@ class MahasiswaController extends BaseController
 
     public function store()
     {
+        if (!$this->validate([
+            'npm' => 'required',
+            'nama' => 'required',
+            'alamat' => 'required'
+        ])) {
+            return redirect()->to('/create')->withInput();
+        }
         $data = [
             'npm' => $this->request->getPost('npm'),
             'nama' => $this->request->getPost('nama'),
@@ -61,6 +68,13 @@ class MahasiswaController extends BaseController
 
     public function update($id)
     {
+        if (!$this->validate([
+            'npm' => 'required',
+            'nama' => 'required',
+            'alamat' => 'required'
+        ])) {
+            return redirect()->to('/edit/' . $id)->withInput();
+        }
         $this->mahasiswaModel->save([
             'id' => $id,
             'npm' => $this->request->getVar('npm'),
