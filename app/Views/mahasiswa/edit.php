@@ -1,3 +1,5 @@
+<?= $this->extend('template') ?>
+<?= $this->section('content') ?>
 <div class="row mb-3">
     <a href="/mahasiswa" class="text-reset fs-6 d-flex align-items-center">
         <ion-icon name="chevron-back-outline" class="me-1"></ion-icon>
@@ -26,3 +28,4 @@
 
     <button type="submit" name="submit" class="btn btn-primary">Submit</button>
 </form>
+<?= $this->endSection() ?>

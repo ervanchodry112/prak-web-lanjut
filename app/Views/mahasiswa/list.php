@@ -1,5 +1,7 @@
 <?php
 $i = 1;
+echo $this->extend('template');
+echo $this->section('content');
 ?>
 
 <a href="/create" class="btn btn-primary my-3">
@@ -24,6 +26,7 @@ $i = 1;
                 <td><?= $data['npm'] ?></td>
                 <td><?= $data['nama'] ?></td>
                 <td><?= $data['alamat'] ?></td>
+                <td><?= $data['deskripsi'] ?></td>
                 <td><?= $data['created_at'] ?></td>
                 <td><?= $data['updated_at'] ?></td>
                 <td>
@@ -34,7 +37,8 @@ $i = 1;
                         <form action="/delete/<?= $data['id'] ?>" method="post">
                             <input type="hidden" name="_method" value="DELETE">
                             <button type="submit" class="btn btn-danger btn-sm">
-                                <ion-icon name="trash-outline"></ion-icon>
+                                <ion-icon name="trash-outline">
+                                    </ion-icon$>
                             </button>
 
                         </form>
@@ -44,3 +48,4 @@ $i = 1;
         <?php } ?>
     </tbody>
 </table>
+<?= $this->endSection() ?>

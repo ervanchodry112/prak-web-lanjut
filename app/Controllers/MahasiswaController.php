@@ -21,9 +21,7 @@ class MahasiswaController extends BaseController
             'mahasiswa' => $mahasiswa,
         ];
 
-        return view('templates/header', $data)
-            . view('mahasiswa/list', $data)
-            . view('templates/footer');
+        return view('mahasiswa/list', $data);
     }
 
     public function create()
@@ -31,9 +29,7 @@ class MahasiswaController extends BaseController
         $data = [
             'title' => 'Tambah Data'
         ];
-        return view('templates/header', $data)
-            . view('mahasiswa/create')
-            . view('templates/footer');
+        return view('mahasiswa/create', $data);
     }
 
     public function store()
@@ -41,7 +37,8 @@ class MahasiswaController extends BaseController
         if (!$this->validate([
             'npm' => 'required',
             'nama' => 'required',
-            'alamat' => 'required'
+            'alamat' => 'required',
+            'deskripsi' => 'required'
         ])) {
             return redirect()->to('/create')->withInput();
         }
@@ -49,6 +46,7 @@ class MahasiswaController extends BaseController
             'npm' => $this->request->getPost('npm'),
             'nama' => $this->request->getPost('nama'),
             'alamat' => $this->request->getPost('alamat'),
+            'deskripsi' => $this->request->getPost('deskripsi'),
         ];
         $this->mahasiswaModel->save($data);
         return redirect()->to('/mahasiswa');
@@ -61,9 +59,7 @@ class MahasiswaController extends BaseController
             'title' => 'Edit Data',
             'mahasiswa' => $mahasiswa
         ];
-        return view('templates/header', $data)
-            . view('mahasiswa/edit', $data)
-            . view('templates/footer');
+        return view('mahasiswa/edit', $data);
     }
 
     public function update($id)
